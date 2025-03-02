@@ -1,0 +1,66 @@
+<script>
+function processProductData(arr1,arr2){
+let obj={}
+    let oneArray=[...arr1,...arr2]
+    console.log(oneArray)
+
+    oneArray.map((ele,index,arr)=>{
+        obj.totalProduct=index+1
+        // obj. totalValue=(ele.price*ele.stock)
+    })
+   let bag=0
+   let prod=0
+   oneArray.map((ele)=>{
+       bag+=ele.price*ele.stock
+       
+       prod+=ele.stock
+       
+    })
+    //console.log(prod)
+    let avg=bag/prod
+
+    obj.totalValue=bag
+
+    let obj1={}
+oneArray.map((ele)=>{
+let bag=ele.category
+  if(obj1[bag]){
+    obj1[bag]++
+  }else{
+    obj1[bag]=1
+  }
+})
+//console.log(obj1)
+obj.categoryCounts=obj1
+
+    obj.averagePrice=avg
+
+
+  
+console.log(obj)
+
+}
+
+
+// {
+//   totalProducts: 4,
+//   totalValue: 33249.50, // Sum of (price × stock) for all products
+//   categoryCounts: { "Electronics": 2, "Kitchen": 2 },
+//   averagePrice: 459.99 // Average price across all products
+// }
+
+processProductData(// First array: electronicsProducts
+[
+  { id: 1, name: "Laptop", price: 999.99, category: "Electronics", stock: 15 },
+  { id: 2, name: "Smartphone", price: 699.99, category: "Electronics", stock: 20 }
+]
+
+,
+[
+  { id: 3, name: "Blender", price: 49.99, category: "Kitchen", stock: 10 },
+  { id: 4, name: "Coffee Maker", price: 89.99, category: "Kitchen", stock: 5 }
+]
+
+)
+
+</script>

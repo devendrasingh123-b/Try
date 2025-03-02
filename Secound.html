@@ -1,0 +1,20 @@
+<script>
+
+
+function fetchUserCities(){
+
+fetch("https://jsonplaceholder.typicode.com/users").then((ele)=>{
+    return ele.json()
+}).then((ele)=>{
+    
+    let city=ele.map((ele)=>{
+          return ele.address.city
+    })
+    console.log(city)
+})
+
+}
+fetchUserCities()
+
+
+</script>

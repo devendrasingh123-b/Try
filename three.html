@@ -1,0 +1,93 @@
+<script>
+
+function BookCollection(){
+
+let arr=[]
+this.addBook=function(obj){
+     arr.push(obj)
+} 
+
+console.log(arr)
+,
+
+
+this.findBooksByAuthor=function(author){
+    let arr1=[]
+         arr.map((ele)=>{
+                if(ele.author===author){
+                     arr1.push(ele)  
+                }
+           })
+
+        return arr1  
+},
+
+this.getStatostics=function(){
+    let obj={}
+   arr1= arr.sort( (a,b)=>a.year-b.year)
+         arr1.map((ele,indes,arr)=>{
+obj.totalBook=indes+1
+obj.oldestBook=arr[0]
+obj.newestBook=arr[indes]
+
+
+//obj.authorsCount=2,
+//let Obj={}
+// obj.genreCounts=function(){
+//           arr.map((ele)=>{
+// if(Obj[ele.genre]){
+//     Obj[ele.genre]++
+//     }else{
+//     Obj[ele.genre]=1
+// }
+//           })
+// }
+//console.log(Obj)
+         })
+
+
+return obj        }
+
+}
+
+
+// Expected output:
+// {
+//   totalBooks: 3,
+//   oldestBook: { title: "The Great Gatsby", year: 1925, ... },
+//   newestBook: { title: "To Kill a Mockingbird", year: 1960, ... },
+//   authorsCount: 2,
+//   genreCounts: { "Fiction": 3 }
+// }
+
+const classicBooks = new BookCollection("My Reading List");
+
+classicBooks.addBook({
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
+  year: 1925,
+  genre: "Fiction"
+}
+)
+
+classicBooks.addBook({
+  title: "To Kill a Mockingbird",
+  author: "Harper Lee",
+  year: 1960,
+  genre: "Fiction"
+})
+
+classicBooks.addBook({
+  title: "Tender Is the Night",
+  author: "F. Scott Fitzgerald",
+  year: 1934,
+  genre: "Fiction"
+})
+
+
+let find=classicBooks.findBooksByAuthor("F. Scott Fitzgerald")
+//console.log(find)
+
+let three=classicBooks.getStatostics()
+console.log(three)
+</script>
